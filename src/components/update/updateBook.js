@@ -4,7 +4,7 @@ import { updateBook } from "../../actions";
 import { Link, useParams } from "react-router-dom";
 
 export default function UpdateBook() {
-  const{idBook} = useParams()
+  const { idBook } = useParams();
 
   const user = useSelector((state) => state.user);
   const bookToUpdate = user.userLibrary.find((book) => book.idBook == idBook);
@@ -12,6 +12,7 @@ export default function UpdateBook() {
   let [title, setTitle] = useState(bookToUpdate.title);
   let [description, setDescription] = useState(bookToUpdate.description);
   let [cover, setCover] = useState(bookToUpdate.cover);
+  let [category, setCategory] = useState(bookToUpdate.category);
   let [addTime, setAddTime] = useState(bookToUpdate.addTime);
   const dispatch = useDispatch();
 
@@ -22,10 +23,9 @@ export default function UpdateBook() {
   }
 
   const handleUpdateBook = () => {
-    dispatch(updateBook(idBook, title, description, cover, addTime));
+    dispatch(updateBook(idBook, title, description, cover,category, addTime));
     alert("The book has been Updated successfully");
   };
-  
 
   return (
     <div className="container">
@@ -69,6 +69,21 @@ export default function UpdateBook() {
                         }></textarea>
                     </div>
                     <br />
+                    <h4>Category:</h4>
+                    <select
+                      class="form-select"
+                      aria-label="Default select example"
+                      onChange={(e) => setCategory(e.target.value)}>
+                      <option selected>Chose a category</option>
+                      <option value="Science Fiction">Science Fiction</option>
+                      <option value="Crime">Crime</option>
+                      <option value="History">History</option>
+                      <option value="Fantasy">Fantasy</option>
+                      <option value="Horror">Horror</option>
+                      <option value="Romance">Romance</option>
+                      <option value="Adventure">Adventure</option>
+                    </select>
+                    <br />
                     <input type="file" onChange={(e) => handleImage(e)} />
                     <br />
                     <div className="form-group mt-3">
@@ -91,5 +106,4 @@ export default function UpdateBook() {
       </div>
     </div>
   );
-  
 }

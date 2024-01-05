@@ -5,31 +5,31 @@ import { Link } from "react-router-dom";
 export default function CreateBook() {
   let [title, setTitle] = useState("");
   let [description, setDescription] = useState("");
-  let [img, setimg] = useState("Default_img.jpg");
+  let [category, setCategory] = useState("");
+  let [cover, setCover] = useState("Default_img.jpg");
 
   const dispatch = useDispatch();
   const userLibrary = useSelector((state) => state.user.userLibrary);
 
-
   function handleImage(e) {
     e.target.files.length > 0
-      ? setimg(e.target.files[0].name)
-      : setimg("Default_img.jpg");
+      ? setCover(e.target.files[0].name)
+      : setCover("Default_img.jpg");
   }
 
   const handleAddBook = () => {
-      const currentDate = new Date();
-      const addTime = currentDate.toLocaleString("fr-FR", {
-        year: "2-digit",
-        month: "2-digit",
-        day: "2-digit",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: false,
-      });
+    const currentDate = new Date();
+    const addTime = currentDate.toLocaleString("fr-FR", {
+      year: "2-digit",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    });
     const idBook = userLibrary.length + 1;
-    dispatch(addBook(idBook, title, description, img, addTime));
+    dispatch(addBook(idBook, title, description, cover, category, addTime));
     alert("The book has been added successfully");
   };
 
@@ -44,7 +44,7 @@ export default function CreateBook() {
                   <div className="row heading-section">
                     <div className="col-9">
                       <h4>
-                        <em>test</em> Book
+                        <em>Add</em> Book
                       </h4>
                     </div>
                     <div className="col-3">
@@ -75,13 +75,28 @@ export default function CreateBook() {
                         }></textarea>
                     </div>
                     <br />
+                    <h4>Category:</h4>
+                    <select
+                      class="form-select"
+                      aria-label="Default select example"
+                      onChange={(e) => setCategory(e.target.value)}>
+                      <option selected>Chose a category</option>
+                      <option value="Science Fiction">Science Fiction</option>
+                      <option value="Crime">Crime</option>
+                      <option value="History">History</option>
+                      <option value="Fantasy">Fantasy</option>
+                      <option value="Horror">Horror</option>
+                      <option value="Romance">Romance</option>
+                      <option value="Adventure">Adventure</option>
+                    </select>
+                    <br />
                     <input type="file" onChange={(e) => handleImage(e)} />
                     <br />
                     <div className="form-group mt-3">
                       <button
                         type="submit"
                         className="btn btn-primary"
-                        value={img}
+                        value={cover}
                         onClick={handleAddBook}>
                         Add
                       </button>

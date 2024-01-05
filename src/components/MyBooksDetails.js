@@ -68,6 +68,8 @@ export default function MyBooksDetails() {
                                 "No description available."
                             : "No description available."}
                         </p>
+                        <hr/>
+                        <p>category : {book.category}</p>
                       </div>
                       {/* description */}
                     </div>

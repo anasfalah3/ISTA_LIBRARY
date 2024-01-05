@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch,useSelector } from 'react-redux'
-import { deleteBook } from "../actions";
+import { deleteBook,filterBook } from "../actions";
 import { Link } from 'react-router-dom';
 export default function Profile() {
   const user = useSelector((state) => state.user);
