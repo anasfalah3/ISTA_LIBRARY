@@ -35,7 +35,7 @@ export default function UpdateUser() {
                   <div className="row heading-section">
                     <div className="col-9">
                       <h4>
-                        <em>test</em> Book
+                        <em>Update</em> Profile
                       </h4>
                     </div>
                     <div className="col-3">
@@ -44,15 +44,15 @@ export default function UpdateUser() {
                   </div>
                   <div className="col-lg-8">
                     <div className="form-group ">
-                      <h4>Title:</h4>
+                      <h4>Nom:</h4>
                       <input
                         type="text"
                         className="form-control"
                         placeholder="Title"
                         value={nom}
                         onChange={(e) => setNom(e.target.value)}
-                      />
-                      <br />
+                        />
+                        <h4>Prenom:</h4>
                       <input
                         type="text"
                         className="form-control"
@@ -63,7 +63,7 @@ export default function UpdateUser() {
                     </div>
                     <br />
                     <div className="form-group">
-                      <h4>Title:</h4>
+                      <h4>Bio:</h4>
                       <input
                         type="text"
                         className="form-control"
@@ -72,9 +72,13 @@ export default function UpdateUser() {
                         onChange={(e) => setBio(e.target.value)}
                       />
                     </div>
-
                     <br />
-                    <input type="file" onChange={(e) => handleImage(e)} />
+                    <h4>Image:</h4>
+                    <input
+                      type="file"
+                      className="form-control"
+                      onChange={(e) => handleImage(e)}
+                    />
                     <br />
                     <div className="form-group mt-3">
                       <button

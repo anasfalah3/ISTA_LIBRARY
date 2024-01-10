@@ -71,7 +71,7 @@ export default function UpdateBook() {
                     <br />
                     <h4>Category:</h4>
                     <select
-                      class="form-select"
+                      className="form-select"
                       aria-label="Default select example"
                       onChange={(e) => setCategory(e.target.value)}>
                       <option selected>Chose a category</option>
@@ -84,7 +84,12 @@ export default function UpdateBook() {
                       <option value="Adventure">Adventure</option>
                     </select>
                     <br />
-                    <input type="file" onChange={(e) => handleImage(e)} />
+                    <h4>Cover:</h4>
+                    <input
+                      type="file"
+                      className="form-control"
+                      onChange={(e) => handleImage(e)}
+                    />
                     <br />
                     <div className="form-group mt-3">
                       <button

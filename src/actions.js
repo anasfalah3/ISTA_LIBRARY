@@ -31,3 +31,8 @@ export const favoriteBook = () => {
     type: "FAVORITE_BOOK",
   };
 };
+export const viewedBook = () => {
+  return {
+    type: "VIWED_BOOK",
+  };
+};

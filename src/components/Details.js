@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { favoriteBook } from "../actions";
+import { favoriteBook, viewedBook } from "../actions";
 
 export default function Details() {
   const [book, setBook] = useState({});
@@ -13,7 +13,9 @@ export default function Details() {
   const handleFavorite = (idBook) => {
     dispatch(favoriteBook(idBook));
   };
-
+  useEffect(() => {
+    dispatch(viewedBook());
+  }, []);
   useEffect(() => {
     axios
       .get(`https://openlibrary.org/works/${isbn}.json`)

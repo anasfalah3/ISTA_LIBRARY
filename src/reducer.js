@@ -13,7 +13,7 @@ const initialState = {
           "Delve into the past of Gurney Halleck, Leto Atreides, Lady Jessica, and Liet Kynes, and discover how the complex and brutal machinations of House Harkonnen shaped their future! What difficult choices will tear Leto apart as Baron Harkonnen plots against not just House Atreides, but the Bene Gesserit and the Emperor himself? And who watches Duke Atreides from afar? This dangerous figure holds untold significance for his future and lineage… The second NYT Bestselling prequel to Dune is adapted for the first time by award-winning novelists Brian Herbert and Kevin J. Anderson and artist Michael Shelfer (Domino), unveiling a closer look at the rising conflict between beloved characters and bitter villains. Collects Dune: House Harkonnen",
         cover: "dune.jpg",
         addTime: "01/01/24 17:55:54",
-        category: "science fiction",
+        category: "Science Fiction",
       },
       {
         idBook: 2,
@@ -22,7 +22,7 @@ const initialState = {
           "Harriet Vanger, a scion of one of Sweden’s wealthiest families disappeared over forty years ago. All these years later, her aged uncle continues to seek the truth. He hires Mikael Blomkvist, a crusading journalist recently trapped by a libel conviction, to investigate. He is aided by the pierced and tattooed punk prodigy Lisbeth Salander. Together they tap into a vein of unfathomable iniquity and astonishing corruption.An international publishing sensation, Stieg Larsson's The Girl with the Dragon Tattoo combines murder mystery, family saga, love story, and financial intrigue into one satisfyingly complex and entertainingly atmospheric novel.",
         cover: "theGirl.jpg",
         addTime: "01/01/24 17:55:54",
-        category: "crime",
+        category: "Crime",
       },
       {
         idBook: 3,
@@ -31,7 +31,7 @@ const initialState = {
           "Most books about the history of humanity pursue either a historical or a biological approach, but Dr. Yuval Noah Harari breaks the mold with this highly original book that begins about 70,000 years ago with the appearance of modern cognition. From examining the role evolving humans have played in the global ecosystem to charting the rise of empires, Sapiens integrates history and science to reconsider accepted narratives, connect past developments with contemporary concerns, and examine specific events within the context of larger ideas.",
         cover: "sapiens.jpg",
         addTime: "01/01/24 17:55:54",
-        category: "history",
+        category: "History",
       },
       {
         idBook: 4,
@@ -39,12 +39,12 @@ const initialState = {
         description: "this is a random test description for book 4",
         cover: "theHobbits.jpg",
         addTime: "01/01/24 17:55:54",
-        category: "fantasy",
+        category: "Fantasy",
       },
     ],
     browserBook: {
-      favBooks: 5,
-      viewedBooks: 10,
+      favBooks: 0,
+      viewedBooks: 0,
     },
   },
 };
@@ -106,7 +106,7 @@ const booksReducer = (state = initialState, action) => {
           ),
         },
       };
-      
+
     case "FAVORITE_BOOK":
       return {
         ...state,
@@ -115,6 +115,17 @@ const booksReducer = (state = initialState, action) => {
           browserBook: {
             ...state.user.browserBook,
             favBooks: state.user.browserBook.favBooks + 1,
+          },
+        },
+      };
+    case "VIWED_BOOK":
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          browserBook: {
+            ...state.user.browserBook,
+            viewedBooks: state.user.browserBook.viewedBooks + 1,
           },
         },
       };
